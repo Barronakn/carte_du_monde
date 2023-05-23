@@ -25,21 +25,13 @@ const MapboxMap = () => {
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: "mapbox://styles/barronakn/clhxlo4xb007r01qs6kmu6d1o",
+      style: "mapbox://styles/barronakn/clht9ey0q024i01pghj1n42kq",
       center: [0, 0],
       minZoom: 1,
       zoom: 2,
     });
 
     map.on("load", () => {
-      if (isError) {
-        return <p>{error.message}</p>;
-      }
-
-      if (isLoading) {
-        return <p className="load">Veuillez patienter</p>;
-      }
-
       countries.forEach((country) => {
         const [lng, lat] = country.latlng;
 
@@ -93,7 +85,7 @@ const MapboxMap = () => {
     return () => {
       map.remove();
     };
-  }, [countries, isError, isLoading]);
+  }, [countries]);
 
   const getCurrencies = (country) => {
     const currencies = [];
@@ -102,6 +94,14 @@ const MapboxMap = () => {
     }
     return currencies.join(", ");
   };
+
+  if (isError) {
+    return <p>{error.message}</p>;
+  }
+
+  if (isLoading) {
+    return <p className="load">Veuillez patienter</p>;
+  }
 
   return <div ref={mapContainerRef} style={{ height: "100vh" }}></div>;
 };
