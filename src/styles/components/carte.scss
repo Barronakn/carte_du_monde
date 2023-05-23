@@ -1,11 +1,11 @@
-body {
-  margin: 0;
-  padding: 0;
+@media screen and (max-width: 500px) {
+  .mapboxgl-map {
+    transform: scale(0.98);
+  }
 }
 
-#map {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
+@media screen and (max-width: 425px) {
+  .text-4xl {
+    font-size: 1.5rem;
+  }
 }
