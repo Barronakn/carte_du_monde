@@ -32,6 +32,14 @@ const MapboxMap = () => {
     });
 
     map.on("load", () => {
+      if (isError) {
+        return <p>{error.message}</p>;
+      }
+
+      if (isLoading) {
+        return <p className="load">Veuillez patienter</p>;
+      }
+
       countries.forEach((country) => {
         const [lng, lat] = country.latlng;
 
@@ -85,7 +93,7 @@ const MapboxMap = () => {
     return () => {
       map.remove();
     };
-  }, [countries]);
+  }, [countries, isError, isLoading]);
 
   const getCurrencies = (country) => {
     const currencies = [];
@@ -94,14 +102,6 @@ const MapboxMap = () => {
     }
     return currencies.join(", ");
   };
-
-  if (isError) {
-    return <p>{error.message}</p>;
-  }
-
-  if (isLoading) {
-    return <p className="load">Veuillez patienter</p>;
-  }
 
   return <div ref={mapContainerRef} style={{ height: "100vh" }}></div>;
 };
