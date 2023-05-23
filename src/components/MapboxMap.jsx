@@ -47,8 +47,8 @@ const MapboxMap = () => {
           const flagUrl = `https://flagcdn.com/${country.cca2.toLowerCase()}.svg`;
 
           const el = document.createElement("div");
-          el.style.width = "25px";
-          el.style.height = "25px";
+          el.style.width = "30px";
+          el.style.height = "30px";
 
           const flagBackground = document.createElement("div");
           flagBackground.style.backgroundImage = `url(${flagUrl})`;
