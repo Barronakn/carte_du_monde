@@ -20,8 +20,7 @@ const MapboxMap = () => {
   } = useQuery("countries", fetchCountries);
 
   useEffect(() => {
-    mapboxgl.accessToken =
-      "pk.eyJ1IjoiYmFycm9uYWtuIiwiYSI6ImNsaHQ4eHhmbjA5NDgzbmw5YnN4YXBqbXcifQ.bs25Hlis-lhjQ5NxUt_6MA";
+    mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
